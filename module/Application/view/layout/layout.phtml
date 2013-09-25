@@ -3,53 +3,93 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <?php echo $this->headTitle('ZF2 '. $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
+        
+        <?php echo $this->headTitle($this->translate('Zend Application'))
+                        ->setSeparator(' - ')
+                        ->setAutoEscape(false) ?>
 
-        <?php echo $this->headMeta()
-            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
-            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
-        ?>
-
+        <?php echo $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1.0') ?>
+        
         <!-- Le styles -->
-        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
-                        ->prependStylesheet($this->basePath() . '/css/style.css')
-                        ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
-                        ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
-
+        <?php echo $this->headLink(array(
+                            'rel' => 'shortcut icon', 
+                            'type' => 'image/vnd.microsoft.icon', 
+                            'href' => $this->basePath('application/img/favicon.ico'),
+                        ))
+                        ->prependStylesheet($this->basePath('cache/application/css/styles.css'))
+                        ->prependStylesheet($this->basePath('cache/application/css/socialbar.css'))
+                        ->prependStylesheet($this->basePath('cache/twitter-bootstrap/css/bootstrap-responsive-2.3.0.min.css'))
+                        ->prependStylesheet($this->basePath('cache/twitter-bootstrap/css/nav.css'))
+                        ->prependStylesheet($this->basePath('cache/twitter-bootstrap/css/bootstrap-2.3.0.min.css')) 
+                        ?>
+        
         <!-- Scripts -->
         <?php echo $this->headScript()
-            ->prependFile($this->basePath() . '/js/bootstrap.min.js')
-            ->prependFile($this->basePath() . '/js/jquery.min.js')
-            ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
-            ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
-        ; ?>
-
+                        ->prependFile($this->basePath('cache/application/js/html5.js'), 'text/javascript', array('conditional' => 'lt IE 9',))
+                        ->prependFile($this->basePath('cache/twitter-bootstrap/js/bootstrap-2.3.0.min.js'))
+                        ->prependFile($this->basePath('cache/application/js/jquery-ui-1.10.2.min.js'))
+                        ->prependFile($this->basePath('cache/application/js/jquery-1.8.3.min.js'))
+                        ?>
+                                                        
     </head>
     <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="<?php echo $this->url('home') ?>"><img src="<?php echo $this->basePath('img/zf2-logo.png') ?>" alt="Zend Framework 2"/>&nbsp;<?php echo $this->translate('Skeleton Application') ?></a>
+    
+        <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+      
+        <header>
+            <nav>
+                <div class="navbar navbar-inverse navbar-fixed-top center">
+                    <div class="navbar-inner">
+                        <div class="container">
+                                                           
+                            <a class="btn btn-navbar pull-right" data-toggle="collapse" data-target=".nav-collapse">
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </a>        
+                            
+                            <div class="nav-collapse collapse">
+                                <ul class="nav">
+                                    <li class="divider-vertical"></li> 
+                                    <li class="dropdown">                                        
+                                        <a class="dropdown-toggle disabled" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="<?php echo $this->url('shop/product') ?>">
+                                            <?php echo $this->translate('Products') ?>
+                                            <b class="caret"></b>
+                                        </a>
+                                        <? /*
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+                                            <li role="presentation">
+                                                <a role="menuitem" tabindex="-1" href="<?php echo $this->url('shop/product/view',array('slug' => 'iphone-5s')) ?>">
+                                                    <?php echo $this->translate('IPhone 5s') ?>
+                                                </a>
+                                            </li>
+                                            <li role="presentation">
+                                                <a role="menuitem" tabindex="-1" href="<?php echo $this->url('shop/product/view',array('slug' => 'samsung-galaxy-s3')) ?>">
+                                                    <?php echo $this->translate('Samsung Galaxy S3') ?>
+                                                </a>
+                                            </li>
+                                        </ul>                                        
+                                        */ ?>
+                                    </li>                                                                
+                                    <li class="divider-vertical"></li>
+                                </ul>
+                                
+                            </div><!--/.nav-collapse -->
+                              
+                        </div>
+                    </div>
                 </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
-                    </ul>
-                </div><!--/.nav-collapse -->
-            </div>
-        </nav>
+            </nav>
+        </header>
+                
         <div class="container">
             <?php echo $this->content; ?>
-            <hr>
-            <footer>
-                <p>&copy; 2005 - <?php echo date('Y') ?> by Zend Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
-            </footer>
-        </div> <!-- /container -->
+        </div>
+        
+        <footer>
+        </footer>
+        
         <?php echo $this->inlineScript() ?>
+        
     </body>
 </html>

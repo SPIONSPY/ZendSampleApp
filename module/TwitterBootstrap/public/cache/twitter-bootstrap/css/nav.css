@@ -1,0 +1,55 @@
+/* navbar height */
+
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+/* font */
+
+@font-face {
+  font-family: 'PT Sans Narrow';
+  font-style: normal;
+  font-weight: 400;
+  src: local('PT Sans Narrow'), local('PTSans-Narrow'), url(http://themes.googleusercontent.com/static/fonts/ptsansnarrow/v3/UyYrYy3ltEffJV9QueSi4RdbPw3QSf9R-kE0EsQUn2A.woff) format('woff');
+}
+
+.navbar .nav > li
+{
+font-family:"PT Sans Narrow";
+font-style:normal;
+font-weight:bold;
+text-transform:uppercase;
+}
+
+/* logo */
+
+div.container a.brand {
+    background: url("../images/zf2-logo.png") no-repeat scroll 0 10px transparent;
+    margin-left: 0;
+    padding: 8px 20px 12px 40px;
+}
+
+/* center align for navbar */
+
+.center.navbar .nav,
+.center.navbar .nav > li {
+    float:none;
+    display:inline-block;
+    *display:inline; /* ie7 fix */
+    *zoom:1; /* hasLayout ie7 trigger */
+    vertical-align: top;
+}
+
+.center .navbar-inner {
+    text-align:center;
+}
+
+.center .dropdown-menu {
+    text-align: left;
+}
+
+.navbar .nav, .navbar .nav > ul
+{
+    float: right
+}

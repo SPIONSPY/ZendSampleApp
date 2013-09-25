@@ -12,15 +12,45 @@
  */
 
 return array(
-    // Whether or not to enable a configuration cache.
-    // If enabled, the merged configuration will be cached and used in
-    // subsequent requests.
-    //'module_listener_options' => array(
-    //    'config_cache_enabled' => false,
-    //    // The key used to create the configuration cache file name.
-    //    'config_cache_key' => 'module_config_cache',
-    //    // The path in which to cache merged configuration.
-    //    'cache_dir' =>  './data/cache',
-    //    ...
-    // )
+    'config_cache_enabled' => false, // if enabled, the merged configuration will be cached and used in subsequent requests
+    'config_cache_key' => 'module_config_cache', // the key used to create the configuration cache file name
+    'cache_dir' =>  './data/cache', // the path in which to cache merged configuration
+    'doctrine' => array(
+        'connection' => array(
+            'orm_default' => array(
+                'driverClass' =>'Doctrine\DBAL\Driver\PDOMySql\Driver',
+                'params' => array(
+                    'host'     => 'localhost',
+                    'port'     => '3306',
+                    'user'     => 'root',
+                    'password' => '',
+                    'dbname'   => 'dbname',
+                ),
+            ),
+        ),
+    ),        
+    'db' => array(
+        'dsn'      => 'mysql:dbname=dbname;host=localhost',
+        'hostname' => 'localhost',
+        'database' => 'dbname',    
+        'username' => 'root',
+        'password' => '',
+    ),
+    'asset_manager' => array(
+        'caching' => array(
+            'default' => array(
+                'cache'     => 'Filesystem', // suitable for dev - serves through php
+                'options' => array(
+                    'dir' => 'data/cache/public',
+                ),
+            ),
+            'default-live' => array(
+                'cache'     => 'FilePath', // suitable for live - serves through apache
+                'options' => array(
+                    'dir' => 'public',
+                ),                
+            ),
+        ),
+    ),    
+    
 );
